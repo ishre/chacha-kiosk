@@ -1,12 +1,13 @@
 "use client"
+import { useChat, Message } from "ai/react"
 import { useState, useEffect } from "react";
 import Head from 'next/head'
 import Image from 'next/image'
-import axios from 'axios';
-import TypingAnimation from "/components/TypingAnimation";
 import { CardTitle, CardHeader, CardContent, Card } from "@components/ui/card"
 import { Button } from "@components/ui/button"
 export default function Home() {
+  const { input, handleInputChange, handleSubmit, isLoading, messages } = useChat();
+
   const [showFAQ, setShowFAQ] = useState(true);
   const [typedMessage, setTypedMessage] = useState('');
   const [chatMessages, setChatMessages] = useState([]);
@@ -44,31 +45,7 @@ export default function Home() {
       handleSendMessageFaq();
     }
   };
-  const [inputValue, setInputValue] = useState('');
-  const [chatLog, setChatLog] = useState([]);
-  const [isLoading, setIsLoading] = useState(false);
-  const handleSubmit = (event) => {
-    event.preventDefault();
-    setChatLog((prevChatLog) => [...prevChatLog, { type: 'user', message: inputValue }])
-    sendMessage(inputValue);
-    setInputValue('');
-  }
-  const sendMessage = (message) => {
-    const url = '/api/chat';
-    const data = {
-      model: "gpt-3.5-turbo",
-      messages: [{ "role": "user", "content": message }]
-    };
-    setIsLoading(true);
-    axios.post(url, data).then((response) => {
-      console.log(response);
-      setChatLog((prevChatLog) => [...prevChatLog, { type: 'bot', message: response.data.choices[0].message.content }])
-      setIsLoading(false);
-    }).catch((error) => {
-      setIsLoading(false);
-      console.log(error);
-    })
-  }
+
   return (
     <div className="min-h-screen w-full p-8">
       <main>
@@ -130,7 +107,7 @@ export default function Home() {
             </section>
             <section className="my-6">
               <h2 className="text-center text-2xl font-bold mb-4 orange_gradient">Chat with Chacha Ji</h2>
-              <div className="bg-white p-6 rounded-lg shadow-md flex items-center space-x-4">
+              <div className="bg-gray-300/20 p-6 rounded-lg shadow-md flex items-center space-x-4">
                 <input
                   aria-label="Chat input"
                   className="flex-grow border-2 border-gray-200 rounded-lg p-2"
@@ -166,33 +143,44 @@ export default function Home() {
                     ))}</div>
                   </div>
                 </div>*/}
-                {
-                  chatLog.map((message, index) => (
-                    <div key={index} className={`flex ${message.type === 'user' ? 'justify-end' : 'justify-start'
-                      }`}>
+
+
+                {messages.map((message) => {
+                  return (
+                    <div key={message.id} className={`flex ${message.role === 'user' ? 'justify-end' : 'justify-start'
+                      }`}><div className={`${message.type === 'user' ? 'bg-yellow-50 rounded-bl-none rounded-lg p-2 text-gray-700' : 'bg-orange-50 rounded-br-none rounded-lg p-2 text-gray-700'
+                        }`}>
+                          
+                                                {message.role === 'assistant' ? (<p className="font-bold">User</p>) : (<p className="font-bold">Chacha Chaudhary</p>)}
+
+                          {message.content.split("\n").map((currentTextBlock, index) => {
+                        if (currentTextBlock === "") {
+                          return <p key={message.id + index}>&nbsp;</p> // " "
+                        } else {
+                          return <p key={message.id + index}>{currentTextBlock}</p> // "Cooper Codes is a YouTuber"
+                        }
+                      })}</div>
+                      {/*  Name of person talking */}
+
+                      {/* Formatting the message */}
                       
 
-                      <div className={`${message.type === 'user' ? 'bg-yellow-50 rounded-bl-none rounded-lg p-2 text-gray-700' : 'bg-orange-50 rounded-br-none rounded-lg p-2 text-gray-700'
-                        }`}>{message.type === 'user' ? (<p className="font-bold">User</p>) : (<p className="font-bold">Chacha Chaudhary</p>)}
-                        {message.message}
-                      </div>
                     </div>
-                  ))
-                }
-                {
-                  isLoading &&
-                  <div key={chatLog.length} className="flex justify-start">
-                    <div className="bg-gray-800 rounded-lg p-4 text-white max-w-sm">
-                      <TypingAnimation />
-                    </div>
-                  </div>
-                }
+                  )
+                })}
+
+
+
+
+                
+               
               </div>
               <div className="flex items-center space-x-4 m-auto mt-4 ">
                 <form onSubmit={handleSubmit} className="w-full">
-                    <input type="text" className="flex-grow border-2 border-gray-200 rounded-lg p-2" placeholder="Type your message..." value={inputValue} onChange={(e) => setInputValue(e.target.value)} />
-                    <button type="submit" className="ml-4 bg-orange-500 rounded-lg px-4 py-2 text-white font-semibold focus:outline-none hover:bg-orange-600 transition-colors duration-300">Send</button>
-                  
+                  <input type="text" className="flex-grow border-2 border-gray-200 rounded-lg p-2" placeholder="Type your message..." value={input}
+                    onChange={handleInputChange} />
+                  <button type="submit" className="ml-4 bg-orange-500 rounded-lg px-4 py-2 text-white font-semibold focus:outline-none hover:bg-orange-600 transition-colors duration-300">Send</button>
+
                 </form>
                 {/*<input
                   aria-label="Chat input"
