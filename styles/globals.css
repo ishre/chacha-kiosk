@@ -4,8 +4,9 @@
 @tailwind utilities;
  
 
-
-
+.form{
+  display: flex;
+}
 
 .main {
   width: 100vw;

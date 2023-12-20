@@ -1,5 +1,5 @@
 import { Inter } from 'next/font/google'
-import '@styles/globals.css';
+import '/styles/globals.css';
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -14,6 +14,8 @@ export default function RootLayout({ children }) {
     <html lang='en'>
     <body>
             <div className="main">
+           
+              
                 <div className="gradient" />
             </div>
             <main className="app">

@@ -1,10 +1,10 @@
 "use client"
 
-import { useChat, Message } from "ai/react"
+import { useChat, Message } from "ai/react";
+import Link from 'next/link';
 import { useRef, useState, useEffect } from "react";
-
-import { CardTitle, CardHeader, CardContent, Card } from "@components/ui/card"
-import { Button } from "@components/ui/button"
+import Image from 'next/image';
+import { CardTitle, CardHeader, CardContent, Card } from "/components/ui/card"
 
 
 export default function Home() {
@@ -76,25 +76,37 @@ export default function Home() {
     getVoices();
   }, []);
 
+  const handleCardClick = (title) => {
+    const inputField = document.querySelector('form input[type="text"]');
+    inputField.value = title;
 
- const handleCardClick = (title) => {
-    // Call your ChatGPT function with the title as input
-    // YourChatGPTFunction(title);
-    console.log(`Clicked on card with title: ${title}`);
-  }
-  
-  
+    // Optionally focus the input field for immediate editing:
+    inputField.focus();
+  };
+
+
+
 
   return (
     <div className="min-h-screen w-full p-8">
+      <Image
+        src="/assets/images/nmcgGif.gif" // For local GIFs
+        alt="Alternative text for the GIF"
+        width={0} // Optional: Set width
+        height={0} // Optional: Set height
+        quality={100} // Optional: Adjust quality (0-100)
+        style={{ width: '150px', height: 'auto', display: 'flex', margin: 'auto' }}
+        unoptimized={true}
+      />
+
       <main><section className="my-6">
         {showFAQ ? (
-          <>
-            <section className="my-8">
-              <h2 className="text-4xl text-center font-bold mb-4 orange_gradient">FAQs & Helpdesk</h2>
-              <h3 className="text-lg text-center mb-10">Know more about the life of chachaji and the project namami gange</h3>
-              <div className="grid grid-cols-2 gap-4">
-                <Card className="w-full" >
+          <section className="my-8">
+            <h2 className="text-4xl text-center font-bold mb-4  text-orange-400">FAQs & Helpdesk</h2>
+            <h3 className="text-lg text-center mb-10">Know more about the life of chachaji and the project namami gange</h3>
+            <div className="grid grid-cols-2 gap-4">
+              <Link href="/f1">
+                <Card className="w-full cursor-pointer" href="/f-1">
                   <CardHeader>
                     <CardTitle>What is the Ganga River's significance?</CardTitle>
                   </CardHeader>
@@ -102,54 +114,58 @@ export default function Home() {
                     <p>Learn about the Ganga's cultural importance and role as India's lifeline, sustaining ecosystems and communities.</p>
                   </CardContent>
                 </Card>
-                <Card className="w-full">
-                  <CardHeader>
-                    <CardTitle>What is the Namami Gange Mission?</CardTitle>
-                  </CardHeader>
-                  <CardContent>
-                    <p>Explore this government initiative's goals, focused on rejuvenating and conserving the Ganga River.</p>
-                  </CardContent>
-                </Card>
-                <Card className="w-full">
-                  <CardHeader>
-                    <CardTitle>How does it promote sustainability?</CardTitle>
-                  </CardHeader>
-                  <CardContent>
-                    <p>Explore initiatives such as afforestation, biodiversity conservation, and eco-friendly practices.</p>
-                  </CardContent>
-                </Card>
-                <Card className="w-full">
-                  <CardHeader>
-                    <CardTitle>How does Namami Gange address pollution?</CardTitle>
-                  </CardHeader>
-                  <CardContent>
-                    <p>Discover measures like wastewater treatment, solid waste management, and industrial effluent control.</p>
-                  </CardContent>
-                </Card>
-                <Card className="w-full">
-                  <CardHeader>
-                    <CardTitle>How does Namami Gange address pollution?</CardTitle>
-                  </CardHeader>
-                  <CardContent>
-                    <p>Discover measures like wastewater treatment, solid waste management, and industrial effluent control.</p>
-                  </CardContent>
-                </Card>
-                <Card className="w-full">
-                  <CardHeader>
-                    <CardTitle>How does Namami Gange address pollution?</CardTitle>
-                  </CardHeader>
-                  <CardContent>
-                    <p>Discover measures like wastewater treatment, solid waste management, and industrial effluent control.</p>
-                  </CardContent>
-                </Card>
-              </div>
-            </section>
-
-          </>
+              </Link>
+              <Link href="/f2">
+              <Card className="w-full cursor-pointer"  >
+                <CardHeader>
+                  <CardTitle>How does it promote sustainability?</CardTitle>
+                </CardHeader>
+                <CardContent>
+                  <p>Explore initiatives such as afforestation, biodiversity conservation, and eco-friendly practices.</p>
+                </CardContent>
+              </Card></Link>
+              <Link href="/f3">
+              <Card className="w-full cursor-pointer" >
+                <CardHeader>
+                  <CardTitle>What is the Namami Gange Mission?</CardTitle>
+                </CardHeader>
+                <CardContent>
+                  <p>Explore this government initiative's goals, focused on rejuvenating and conserving the Ganga River.</p>
+                </CardContent>
+              </Card></Link>
+              <Link href="/f4">
+              <Card className="w-full cursor-pointer" >
+                <CardHeader>
+                  <CardTitle>How does Namami Gange address pollution?</CardTitle>
+                </CardHeader>
+                <CardContent>
+                  <p>Discover measures like wastewater treatment, solid waste management, and industrial effluent control.</p>
+                </CardContent>
+              </Card></Link>
+              <Link href="/f5">
+              <Card className="w-full cursor-pointer" >
+                <CardHeader>
+                  <CardTitle>How does the Namami Gange Mission address the issue of solid waste management along the Ganga River?</CardTitle>
+                </CardHeader>
+                <CardContent>
+                  <p>Explore the specific measures undertaken by the Namami Gange Mission to manage and reduce solid waste pollution along the Ganga River.</p>
+                </CardContent>
+              </Card></Link>
+              <Link href="/f6">
+              <Card className="w-full cursor-pointer" >
+                <CardHeader>
+                  <CardTitle>How does the Namami Gange Mission contribute to the conservation of biodiversity in the Ganga River?</CardTitle>
+                </CardHeader>
+                <CardContent>
+                  <p>Explore the initiatives and strategies implemented by the Namami Gange Mission to safeguard and enhance the biodiversity of the Ganga River ecosystem.</p>
+                </CardContent>
+              </Card></Link>
+            </div>
+          </section>
         ) : (
-          <section className="my-8">
+          <section className="my-8 ">
             <h2 className="text-4xl text-center font-bold mb-12 orange_gradient">Chatting with Chacha Ji</h2>
-            <div className=" p-6 rounded-lg border border-gray-300">
+            <div className=" p-6  ">
               <div className="space-y-4">
 
 
@@ -158,22 +174,22 @@ export default function Home() {
                   return (
                     <div key={message.id} className={`flex ${message.role === 'user' ? 'justify-end' : 'justify-start'
                       }`}>
-                      <div className={`${message.type === 'user' ? 'bg-yellow-50 rounded-bl-none rounded-lg p-2 text-gray-700' : 'bg-orange-50 rounded-br-none rounded-lg p-2 text-gray-700'
+                      <div className={`${message.type === 'user' ? 'bg-blue-50  p-8 text-gray-700' : 'bg-orange-50 rounded-br-none rounded-lg p-2 text-gray-700'
                         }`}>
                         {message.role === 'assistant' ? (
-                          <div>
-                            <p className="font-bold">Chacha Ji</p>
+                          <div className="test">
+                            <p className="font-bold ">Chacha Ji</p>
                             {message.content.split("\n").map((currentTextBlock, index) => {
                               if (currentTextBlock === "") {
-                                return <p key={message.id + index}>&nbsp;</p>
+                                return <p key={message.id + index}>&nbsp;hello</p>
                               } else {
-                                return <p key={message.id + index}>{currentTextBlock}</p>
+                                return <p key={message.id + index}>{currentTextBlock}hello</p>
                               }
                             })}
                             {audio && <audio autoPlay controls src={`audio/${audio}`} />}
                             {console.log(message.content)}
                             <button
-                              className="mt-2 bg-blue-500 rounded-lg px-4 py-2 text-white font-semibold focus:outline-none hover:bg-blue-600 transition-colors duration-300"
+                              className="mt-2 flex-start bg-blue-500 rounded-lg px-4 py-2 text-white font-semibold focus:outline-none hover:bg-blue-600 transition-colors duration-300"
                               onClick={() => handleGenerateTTS(message.content)}>
                               Play
                             </button>
@@ -183,9 +199,9 @@ export default function Home() {
                             <p className="font-bold">You</p>
                             {message.content.split("\n").map((currentTextBlock, index) => {
                               if (currentTextBlock === "") {
-                                return <p key={message.id + index}>&nbsp;</p>
+                                return <p key={message.id + index}>&nbsp;hello</p>
                               } else {
-                                return <p key={message.id + index}>{currentTextBlock}</p>
+                                return <p key={message.id + index}>{currentTextBlock}hello</p>
                               }
                             })}
                           </div>
@@ -198,23 +214,23 @@ export default function Home() {
 
 
               </div>
-              
+
             </div>
           </section>
-        )}</section><section className="my-6 flex flex-col justify-stretch">
-          <div className="bg-gray-300/20 p-6 rounded-lg shadow-md flex items-center space-x-4">
-            <form onSubmit={handleSubmit} ><input
+        )}</section><section className="my-4  ">
+          <div className="form shadow-lg bg-blue-500/10 p-4 rounded-3xl rounded-bl-none">
+            <form onSubmit={handleSubmit} className="width: 100% flex flex-auto" ><input
               aria-label="Chat input"
-              className=" w-auto m-2 border-2 border-gray-200 rounded-lg p-2"
+              className="flex-auto  border-2 border-gray-200 rounded-3xl rounded-bl-none rounded-r-none p-4"
               placeholder="Type your message"
               type="text"
               value={input}
               onChange={handleInputChange}
             />
-              <Button type="submit" disabled={loading} onClick={toggleSection} className="ml-4 border-2 ">{loading ? "..." : "Send"}</Button> </form>
+              <button type="submit" disabled={loading} onClick={toggleSection} className="mx-3 px-8 border-2 shadow-lg bg-blue-600 rounded-3xl rounded-l-none text-white font-bold hover:bg-orange-00">{loading ? "..." : "Send"}</button> </form>
           </div>
         </section>
-        <button className="flex-start p-3 max-w-[160px] my-6 border shadow-sm" onClick={toggleSection}>Switch Section</button>
+        <button className="p-3 rounded-2xl rounded-t-none max-w-[160px] mb-6 -mt-8 border shadow-sm" onClick={toggleSection}>Switch Section</button>
       </main>
       <footer className="py-4">
         <p className="text-center text-gray-600">
