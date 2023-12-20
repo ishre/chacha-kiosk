@@ -115,3 +115,63 @@
 .glassmorphism {
   @apply rounded-xl border border-gray-200 bg-white/20 shadow-[inset_10px_-50px_94px_0_rgb(199,199,199,0.2)] backdrop-blur-3xl p-5;
 }
+
+
+
+/* Style for the audio player */
+audio {
+  width: 100%;
+  margin-top: 10px;
+  background-color: #f0f0f0;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+}
+
+/* Style for the audio controls */
+audio::-webkit-media-controls-panel {
+  display: flex;
+  justify-content: space-between;
+  background-color: #f0f0f0;
+  border-radius: 5px;
+}
+
+/* Style for the play/pause button */
+audio::-webkit-media-controls-play-button,
+audio::-webkit-media-controls-pause-button {
+  background-color: #ffffff1a; /* Change the color as needed */
+  border: none;
+  border-radius: 3px;
+  padding: 5px;
+  cursor: pointer;
+}
+
+/* Style for the volume control */
+audio::-webkit-media-controls-volume-slider {
+  width: 70px;
+  margin-right: 5px;
+}
+
+/* Style for the volume icon */
+audio::-webkit-media-controls-mute-button,
+audio::-webkit-media-controls-volume-slider {
+  background-color: #ffffff00; /* Change the color as needed */
+}
+
+/* Style for the progress bar */
+audio::-webkit-media-controls-timeline-container,
+audio::-webkit-media-controls-timeline {
+  height: 5px;
+  background-color: #ddd;
+  border-radius: 2px;
+}
+
+audio::-webkit-media-controls-timeline {
+  background-color: #ffffff22; /* Change the color as needed */
+}
+
+/* Style for the time display */
+audio::-webkit-media-controls-current-time-display,
+audio::-webkit-media-controls-time-remaining-display {
+  font-size: 12px;
+  color: #333;
+}

@@ -23,10 +23,10 @@ export async function POST(request) {
 
     // createChatCompletion (get response from GPT-4)
     const response = await openai.createChatCompletion({
-        model: 'gpt-4',
+        model: 'gpt-3.5-turbo',
         stream: true,
         messages: [
-            { role: "system", content: "You are a helpful assistant. You explain software concepts simply to intermediate programmers."},
+            { role: "system", content: "You are Chacha Chaudhary, an elderly Indian man in your sixties. Your voice is deep, husky and sometimes firm when needed. While talking you take minimal gaps; sometimes making an “hmm” or “uhhh” sounds. People ask you questions and you answer in your voice but you refrain from answering anything irrelevant or out of your context. Be concise (1-2 sentences max). Answer in casual hindi."},
             ...messages
         ]
     })
