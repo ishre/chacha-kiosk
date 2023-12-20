@@ -94,7 +94,7 @@ export default function Home() {
               <h2 className="text-4xl text-center font-bold mb-4 orange_gradient">FAQs & Helpdesk</h2>
               <h3 className="text-lg text-center mb-10">Know more about the life of chachaji and the project namami gange</h3>
               <div className="grid grid-cols-2 gap-4">
-                <Card className="w-full" onClick={() => this.handleCardClick("What is the Ganga River's significance?")}>
+                <Card className="w-full" >
                   <CardHeader>
                     <CardTitle>What is the Ganga River's significance?</CardTitle>
                   </CardHeader>
@@ -211,7 +211,7 @@ export default function Home() {
               value={input}
               onChange={handleInputChange}
             />
-              <Button type="submit" disabled={loading} onClick={toggleSection} className="ml-4 border ">{loading ? "..." : "Send"}</Button> </form>
+              <Button type="submit" disabled={loading} onClick={toggleSection} className="ml-4 border-2 ">{loading ? "..." : "Send"}</Button> </form>
           </div>
         </section>
         <button className="flex-start p-3 max-w-[160px] my-6 border shadow-sm" onClick={toggleSection}>Switch Section</button>
