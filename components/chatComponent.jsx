@@ -1,69 +1,35 @@
-"use client"
-import { useChat, Message } from "ai/react"
-
-export default function ChatComponent() {
-    // Vercel AI SDK (ai package) useChat()
-    // useChat -> handles messages for us, user input, handling user submits, etc.
-    const { input, handleInputChange, handleSubmit, isLoading, messages } = useChat();
-    // messages -> [user asks a question, gpt-4 response, user asks again, gpt-4 responds]
-
-    console.log(messages);
-    console.log(input);
-
-    return (
-        <div>
-            {messages.map((message) => {
-                return (
-                    <div key={message.id}>
-                        {/*  Name of person talking */}
-                        {
-                            message.role === "assistant"
-                            ?
-                            <h3 className="text-lg font-semibold mt-2">
-                                GPT-4
-                            </h3>
-                            :
-                            <h3 className="text-lg font-semibold mt-2">
-                                User
-                            </h3>
-                        }
-                        
-                        {/* Formatting the message */}
-                        {message.content.split("\n").map((currentTextBlock, index ) => {
-                            if(currentTextBlock === "") {
-                                return <p key={message.id + index}>&nbsp;</p> // " "
-                            } else {
-                                return <p key={message.id + index}>{currentTextBlock}</p> // "Cooper Codes is a YouTuber"
-                            }
-                        })}
+const handleSendMessage = (message) => {
+    const newChatMessages = [...chatMessages, { type: 'user', message: typedMessage }];
+    setChatMessages(newChatMessages);
+    // Handle sending the message logic here
+    console.log(`Message sent: ${message}`);
+    // You can also toggle the section after sending the message if needed
+    toggleSection();
+  };
 
 
-                        {/*  
-                            Cooper Codes is a YouTuber
+  const handleSendMessageFaq = () => {
+    const newChatMessages = [...chatMessages, { type: 'user', message: typedMessage }];
+    setChatMessages(newChatMessages);
+    // Handle sending the message logic here
+    console.log(`Message sent: ${typedMessage}`);
+    // Optionally, you can clear the typed message input after sending
+    setTypedMessage('');
+  };
 
-                            He makes software content
 
-                            You should subscribe.
-
-                            ["Cooper Codes is a YouTuber", "", "He makes software content", "", "You should subscribe."]
-
-                        */}
-                    </div>
-                )
-            })}
-
-            <form className="mt-12" onSubmit={handleSubmit}>
-                <p>User Message</p>
-                <textarea
-                    className="mt-2 w-full bg-slate-600 p-2"
-                    placeholder={"What are data structures and algorithims?"}
-                    value={input}
-                    onChange={handleInputChange}
-                />
-                <button className="rounded-md bg-blue-600 p-2 mt-2">
-                    Send message
-                </button>
-            </form>
-        </div>
-    )
-}
+  const handleChangeMessage = (e) => {
+    setTypedMessage(e.target.value);
+  };
+  const handleKeyPress = (e) => {
+    if (e.key === 'Enter') {
+      // If the Enter key is pressed, send the message
+      handleSendMessage();
+    }
+  };
+  const handleKeyPressFaq = (e) => {
+    if (e.key === 'Enter') {
+      // If the Enter key is pressed, send the message
+      handleSendMessageFaq();
+    }
+  };
