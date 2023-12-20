@@ -107,13 +107,11 @@ export default function Home() {
                       The Namami Gange Mission plays a crucial role in biodiversity conservation along the Ganga River. It involves afforestation and reforestation programs to create green buffers along the riverbanks, providing habitat for diverse flora and fauna. Additionally, the mission focuses on the protection of aquatic life, including endangered species, by implementing measures to maintain water quality and prevent pollution. Through these initiatives, Namami Gange seeks to preserve the rich biodiversity of the Ganga basin, ensuring the ecological balance and sustainability of the river ecosystem.
                       </p>
                       <audio
-                        autoplay=""
-                        controls=""
-                        src="audio/mj57bw.mp3"
+                        autoplay
+                        controls
+                        src="audio/FAQ6.mp3"
                       ></audio>
-                      <button class="mt-2 flex-start bg-blue-500 rounded-lg px-4 py-2 text-white font-semibold focus:outline-none hover:bg-blue-600 transition-colors duration-300">
-                        Play
-                      </button>
+                      
                     </div>
                   </div>
                 </div>

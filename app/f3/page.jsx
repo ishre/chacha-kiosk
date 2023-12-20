@@ -121,13 +121,10 @@ export default function Home() {
 
                       </p>
                       <audio
-                        autoplay=""
-                        controls=""
-                        src="audio/mj57bw.mp3"
+                        autoplay
+                        controls
+                        src="audio/FAQ3.mp3"
                       ></audio>
-                      <button class="mt-2 flex-start bg-blue-500 rounded-lg px-4 py-2 text-white font-semibold focus:outline-none hover:bg-blue-600 transition-colors duration-300">
-                        Play
-                      </button>
                     </div>
                   </div>
                 </div>

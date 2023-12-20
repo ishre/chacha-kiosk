@@ -107,13 +107,10 @@ export default function Home() {
                       The Namami Gange Mission employs various measures to address solid waste management along the Ganga River. These include organizing cleanliness drives, promoting proper waste disposal practices, and implementing recycling initiatives. The mission focuses on creating awareness among communities to prevent the indiscriminate dumping of solid waste into the river. By adopting these measures, Namami Gange aims to minimize the impact of solid waste pollution and contribute to the overall cleanliness and health of the Ganga River.
                       </p>
                       <audio
-                        autoplay=""
-                        controls=""
-                        src="audio/mj57bw.mp3"
+                        autoplay
+                        controls
+                        src="audio/FAQ5.mp3"
                       ></audio>
-                      <button class="mt-2 flex-start bg-blue-500 rounded-lg px-4 py-2 text-white font-semibold focus:outline-none hover:bg-blue-600 transition-colors duration-300">
-                        Play
-                      </button>
                     </div>
                   </div>
                 </div>
