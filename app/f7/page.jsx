@@ -95,7 +95,7 @@ export default function Home() {
                   <div class="bg-orange-50 rounded-br-none rounded-lg p-2 text-gray-700">
                     <div>
                       <p class="font-bold">You</p>
-                      <p>How does it promote sustainability?</p>
+                      <p>hello</p>
                     </div>
                   </div>
                 </div>
@@ -104,9 +104,8 @@ export default function Home() {
                     <div class="test">
                       <p class="font-bold ">Chacha Ji</p>
                       <p>
-                        The Ganga River promotes sustainability through various initiatives aimed at environmental conservation. Afforestation programs along the riverbanks contribute to ecosystem health by preventing soil erosion, maintaining water quality, and providing habitat for diverse flora and fauna. Biodiversity conservation efforts focus on protecting and restoring the rich ecological balance of the Ganga basin, ensuring the survival of numerous species.
-                        Additionally, the promotion of eco-friendly practices plays a crucial role. Sustainable agriculture practices, waste management, and the reduction of industrial pollution are key components. The adoption of cleaner technologies and the implementation of wastewater treatment plants contribute to maintaining the river's water quality. These initiatives collectively aim to ensure the long-term sustainability of the Ganga River and its surrounding ecosystems.
-
+                        Namaste! Kya main aapki kis prakar madad kar sakta hu?
+                        (Hello! How can I assist you?)hello
                       </p>
                       <audio
                         autoplay=""
@@ -123,16 +122,18 @@ export default function Home() {
                   return (
                     <div
                       key={message.id}
-                      className={`flex ${message.role === "user"
-                        ? "justify-end"
-                        : "justify-start"
-                        }`}
+                      className={`flex ${
+                        message.role === "user"
+                          ? "justify-end"
+                          : "justify-start"
+                      }`}
                     >
                       <div
-                        className={`${message.type === "user"
-                          ? "bg-blue-50  p-8 text-gray-700"
-                          : "bg-orange-50 rounded-br-none rounded-lg p-2 text-gray-700"
-                          }`}
+                        className={`${
+                          message.type === "user"
+                            ? "bg-blue-50  p-8 text-gray-700"
+                            : "bg-orange-50 rounded-br-none rounded-lg p-2 text-gray-700"
+                        }`}
                       >
                         {message.role === "assistant" ? (
                           <div className="test">

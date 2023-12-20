@@ -157,7 +157,7 @@ export default function Home() {
                   <CardTitle>How does the Namami Gange Mission contribute to the conservation of biodiversity in the Ganga River?</CardTitle>
                 </CardHeader>
                 <CardContent>
-                  <p>Explore the initiatives and strategies implemented by the Namami Gange Mission to safeguard and enhance the biodiversity of the Ganga River ecosystem.</p>
+                  <p>Explore the initiatives and strategies implemented by the Namami Gange Mission to safeguard and enhance the biodiversity.</p>
                 </CardContent>
               </Card></Link>
             </div>
@@ -181,9 +181,9 @@ export default function Home() {
                             <p className="font-bold ">Chacha Ji</p>
                             {message.content.split("\n").map((currentTextBlock, index) => {
                               if (currentTextBlock === "") {
-                                return <p key={message.id + index}>&nbsp;hello</p>
+                                return <p key={message.id + index}>&nbsp;</p>
                               } else {
-                                return <p key={message.id + index}>{currentTextBlock}hello</p>
+                                return <p key={message.id + index}>{currentTextBlock}</p>
                               }
                             })}
                             {audio && <audio autoPlay controls src={`audio/${audio}`} />}
@@ -199,9 +199,9 @@ export default function Home() {
                             <p className="font-bold">You</p>
                             {message.content.split("\n").map((currentTextBlock, index) => {
                               if (currentTextBlock === "") {
-                                return <p key={message.id + index}>&nbsp;hello</p>
+                                return <p key={message.id + index}>&nbsp;</p>
                               } else {
-                                return <p key={message.id + index}>{currentTextBlock}hello</p>
+                                return <p key={message.id + index}>{currentTextBlock}</p>
                               }
                             })}
                           </div>
@@ -227,7 +227,7 @@ export default function Home() {
               value={input}
               onChange={handleInputChange}
             />
-              <button type="submit" disabled={loading} onClick={toggleSection} className="mx-3 px-8 border-2 shadow-lg bg-blue-600 rounded-3xl rounded-l-none text-white font-bold hover:bg-orange-00">{loading ? "..." : "Send"}</button> </form>
+              <button type="submit" disabled={loading} className="mx-3 px-8 border-2 shadow-lg bg-blue-600 rounded-3xl rounded-l-none text-white font-bold hover:bg-orange-00">{loading ? "..." : "Send"}</button> </form>
           </div>
         </section>
         <button className="p-3 rounded-2xl rounded-t-none max-w-[160px] mb-6 -mt-8 border shadow-sm" onClick={toggleSection}>Switch Section</button>
